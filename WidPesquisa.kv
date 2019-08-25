@@ -1,0 +1,255 @@
+#:kivy 1.11.0
+
+# Widget utilizado para criar o Widget de 'Pesquisa' e 'Resultados da Pesquisa'
+#     Ações:
+#     - Pesquisar
+#     - Escolher um resultado da pesquisa
+#     - Apresentar um resultado da pesquisa
+
+# ----- Importações ----- #
+#:import pat os
+
+
+# ----- Pesquisa ----- #
+<WidPesquisa>:
+	id: box_intdados
+	pos_hint: {'x': .02, 'top': .85}
+	size_hint: (.30, .70)
+
+	# ----- Fundo pesquisa ----- #
+	BoxLayout:
+		canvas:
+			Color:
+				rgba: (0, 0, .3, .4)
+			Rectangle:
+				pos: self.pos
+				size: self.size
+		pos_hint: {'x': 0, 'top': 1}
+		size_hint: (1, .27)
+
+	# ----- Titulo Principal ----- #
+	Label:
+		id: textopesquisa
+		pos_hint: {'right': .90, 'y': .93}
+		size_hint: (.40, .05)
+		padding: (1, 0)
+		font_size: '17sp'
+		text_size: self.size
+		halign: 'right'
+		valign: 'center'
+
+	# ----- Botão de Pesquisar ----- #
+	Button:
+		id: btn_pesquisa
+		pos_hint: {'x': .75, 'y': .76}
+		size_hint: (.22, .07)
+		background_normal: 'Images/btn_azul.png'
+        background_down: 'Images/btn_azul2.png'
+        border: (0, 0, 0, 0)
+        text_size: self.size
+        halign: 'left'
+        line_height: 1.8
+        color: (0.831, 0.941, 1, 1)
+		text: '  Pesquisar'
+		on_release: root.pesquisa()
+
+	# ----- Botão de Limpar ----- #
+	Button:
+		pos_hint: {'x': .52, 'y': .76}
+		size_hint: (.22, .07)
+		background_normal: 'Images/btn_azul.png'
+        background_down: 'Images/btn_azul2.png'
+        border: (0, 0, 0, 0)
+        text_size: self.size
+        halign: 'left'
+        line_height: 1.8
+        color: (0.831, 0.941, 1, 1)
+		text: '  Limpar'
+		on_release: root.limpa_widpesquisa()
+		on_release: app.root.close_wid()
+
+	# ----- Botão para Sair ----- #
+	Button:
+		background_normal: 'Images/Close.png'
+		background_down: 'Images/Close.png'
+		border: (0, 0, 0, 0)
+		pos_hint: {'x': .91, 'y': .93}
+		size_hint: (.05, .04)
+		on_release: app.root.remove_widget(root)
+		on_release: app.root.cont2 = 0
+		on_release: app.root.close_wid()
+
+	# ----- Input Pesquisa ----- #
+	TextInput:
+		id: input_pesquisa
+		background_color: (0.96, 0.93, 0.73, 1) if self.focus else (0.83, 0.94, 1, 1)
+		size_hint: (.94, .06)
+		pos_hint: {'x': .03, 'y': .85}
+		hint_text: 'Pesquisa'
+		multiline: False
+		write_tab: False
+
+	# ----- ScrollView de Resultados ----- #
+	Scrollwid:
+		id: scrollwid
+		pos_hint: {'x': 0, 'y': 0}
+		size_hint: (1, .70)
+
+		BoxLayout: # --- Box de Resultados --- #
+			id: box_scrollwid
+			#padding: 5
+			spacing: 10
+			orientation: 'vertical'
+			size_hint_y: None
+			height: self.minimum_height
+
+
+# ----- Scroll Wid Child ----- #
+<ScroolWidChild>:
+	id: btn_widchild
+	#border_radius: 5
+	canvas.before:
+		Color:
+			rgba: (0, 0, .3, .4)
+		RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [6,]
+	canvas:
+		Color:
+			rgba: (0.831, 0.941, 1, 1)
+		Line:
+			rounded_rectangle: (self.pos[0], self.pos[1], self.size[0], self.size[1], 5, 100)
+			width: .8
+	size_hint_y: None
+	height: 40
+	background_normal: ''
+    background_color: (0, 0, 0, 0)
+    background_down: 'Images/fundo_btn_azul.png'
+	text_size: self.size
+	padding: (7, 5)
+	halign: 'left'
+	valign: 'top'
+	line_height: 1.5
+	color: (0.831, 0.941, 1, 1)
+	on_release: app.root.opcoes_pesquisa(self.text)
+
+
+# ----- Wid resultados da pesquisa ----- #
+<ResPesquisaWid>:
+	canvas:
+		Color:
+			rgba: (0, 0, .3, .4)
+		Rectangle:
+			pos: self.pos
+			size: self.size
+	pos_hint: {'x': .53, 'top': .85}
+	size_hint: (.38, .50)
+
+    # ----- Botão de Sair ----- #
+    Button:
+        pos_hint: {'x': .92, 'top': .965}
+        size_hint: (.05, .06)
+        background_normal: 'Images/Close.png'
+		background_down: 'Images/Close.png'
+		border: (0, 0, 0, 0)
+        on_release: app.root.close_wid()
+
+	# ----- Labels ----- #
+	WidLabelTexto:
+		pos_hint: {'x': .04, 'top': .95}
+		text: 'Nome Aluno(a):'
+
+	WidLabelTexto:
+		pos_hint: {'x': .04, 'top': .85}
+		text: 'Data Nascimento:'
+
+	WidLabelTexto:
+		pos_hint: {'x': .04, 'top': .75}
+		text: 'CPF:'
+
+	WidLabelTexto:
+		pos_hint: {'x': .04, 'top': .65}
+		text: 'RG:'
+
+	WidLabelTexto:
+		pos_hint: {'x': .04, 'top': .55}
+		text: self.historico
+
+	WidLabelTexto:
+		pos_hint: {'x': .04, 'top': .45}
+		text: self.certidao
+
+	WidLabelTexto:
+		pos_hint: {'x': .04, 'top': .31}
+		text: 'Pasta:'
+
+	WidLabelTexto:
+		pos_hint: {'x': .04, 'top': .21}
+		text: self.posicao
+
+	WidLabelTexto:
+		pos_hint: {'x': .04, 'top': .11}
+		text: 'Protocolo:'
+
+	# ----- Resultados Labels ----- #
+	WidLabelResultados:
+		id: lbl_01
+		pos_hint: {'x': .32, 'top': .95}
+
+	WidLabelResultados:
+		id: lbl_02
+		pos_hint: {'x': .32, 'top': .85}
+
+	WidLabelResultados:
+		id: lbl_03
+		pos_hint: {'x': .32, 'top': .75}
+
+	WidLabelResultados:
+		id: lbl_04
+		pos_hint: {'x': .32, 'top': .65}
+
+	WidLabelResultados:
+		id: lbl_05
+		pos_hint: {'x': .32, 'top': .55}
+
+	WidLabelResultados:
+		id: lbl_06
+		pos_hint: {'x': .32, 'top': .45}
+
+	WidLabelResultados:
+		id: lbl_07
+		pos_hint: {'x': .32, 'top': .31}
+
+	WidLabelResultados:
+		id: lbl_08
+		pos_hint: {'x': .32, 'top': .21}
+
+	WidLabelResultados:
+		id: lbl_09
+		pos_hint: {'x': .32, 'top': .11}
+
+
+# ----- Modelo Wid Label ----- #
+<WidLabelTexto>:
+	canvas.before:
+		Color:
+			rgba: (0, 0, .3, .4)
+		Rectangle:
+			pos: self.pos
+			size: self.size
+	size_hint: (.26, .06)
+	text_size: self.size
+	padding: (5, 0)
+	halign: 'left'
+	valign: 'center'
+	color: (0.831, 0.941, 1, 1)
+
+
+# ----- Modelo Wid Label resultados ----- #
+<WidLabelResultados>:
+	size_hint: (.65, .06)
+	text_size: self.size
+	halign: 'left'
+	valign: 'center'
+	color: (0.831, 0.941, 1, 1)

@@ -1,0 +1,82 @@
+#:kivy 1.11.0
+
+# Janela principal
+
+
+# ----- Wid Principal ----- #
+<Principal>:
+	id: mainwid
+
+	# ----- Imagem Principal Fundo ----- #
+	Image:
+		source: 'Images/FundoPrincipal.jpg'
+		pos: self.pos
+		size: self.size
+		allow_stretch: True
+		keep_ratio: False
+
+    Label:  # ----- Titulo ----- #
+        pos_hint: {'right': .98, 'top': .97}
+        size_hint: (.30, .05)
+        font_size: '28sp'
+		color: (0.831, 0.941, 1, 1)
+        text: 'Arquivo Passivo'
+        text_size: self.size
+        halign: 'right'
+		valign: 'top'
+
+	# ----- Wid Botões Principais----- #
+	BoxLayout:
+		id: principallayout
+		spacing: 2
+		pos_hint: {'x': .02, 'top': .96}
+		size_hint: (.3, .06)
+
+		Button:  # ----- Botão Novo ----- #
+			background_normal: 'Images/btn_azul.png'
+			background_down: 'Images/btn_azul2.png'
+			border: (0, 0, 0, 0)
+			text_size: self.size
+			halign: 'left'
+			valign: 'center'
+			line_height: 1.8
+			color: (0.831, 0.941, 1, 1)
+			text: '  Novo'
+			on_release: root.acao_principal('Novo Registro')
+
+		Button:  # ----- Botão Pesquisar ----- #
+			background_normal: 'Images/btn_azul.png'
+			background_down: 'Images/btn_azul2.png'
+			border: (0, 0, 0, 0)
+			text_size: self.size
+			halign: 'left'
+			valign: 'center'
+			line_height: 1.8
+			color: (0.831, 0.941, 1, 1)
+			text: '  Pesquisar'
+			on_release: root.acao_principal('Pesquisa')
+
+		Button:  # ----- Botão Alterar ----- #
+			background_normal: 'Images/btn_azul.png'
+			background_down: 'Images/btn_azul2.png'
+			border: (0, 0, 0, 0)
+			text_size: self.size
+			halign: 'left'
+			valign: 'center'
+			line_height: 1.8
+			color: (0.831, 0.941, 1, 1)
+			text: '  Alterar'
+			on_release: root.acao_principal('Alterar Registro')
+
+		Button:  # ----- Botão Apagar ----- #
+			background_normal: 'Images/btn_azul.png'
+			background_down: 'Images/btn_azul2.png'
+			border: (0, 0, 0, 0)
+			text_size: self.size
+			halign: 'left'
+			valign: 'center'
+			line_height: 1.8
+			color: (1, 0, 0, 1)
+			#color: (0.831, 0.941, 1, 1)
+			text: '  Apagar'
+			on_release: root.acao_principal('Apagar Registro')

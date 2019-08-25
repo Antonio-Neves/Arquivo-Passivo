@@ -1,0 +1,315 @@
+#:kivy 1.11.0
+
+# O Widget vai ser usado para introduzir dados quando:
+# - Salvar
+# - Alterar
+
+
+# ----- Wid Principal Introdução de Dados ----- #
+<WidIntroDados>:
+    id: box_introdados
+    pos_hint: {'x': .53, 'top': .85}
+    size_hint: (.38, .70)
+
+    # ----- Fundo Escuro do Formulário ----- #
+    BoxLayout:
+        canvas:
+            Color:
+                rgba: (0, 0, .3, .4)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        pos_hint: {'x': 0, 'top': 1}
+        size_hint: (1, .62)
+
+    # ----- Titulo Wid ----- #
+    Label:
+        id: titulo_widintrodados
+        pos_hint: {'right': .90, 'top': .97}
+        size_hint: (.35, .05)
+        padding: (1, 0)
+        text_size: self.size
+        color: (0.831, 0.941, 1, 1)
+        font_size: '20sp'
+        halign: 'right'
+        valign: 'top'
+
+    # ----- Botão de Sair ----- #
+    Button:
+        pos_hint: {'x': .92, 'top': .965}
+        size_hint: (.045, .045)
+        background_normal: 'Images/Close.png'
+		background_down: 'Images/Close.png'
+		border: (0, 0, 0, 0)
+        on_release: app.root.close_wid()
+
+    # ----- Dados ----- #
+
+    # ----- Nome do Aluno ----- #
+    Label:
+        id: lbl_01
+        pos_hint: {'x': .03, 'top': .90}
+        size_hint: (.30, .03)
+        padding: (1, 0)
+        text_size: self.size
+        color: (0.831, 0.941, 1, 1)
+        halign: 'left'
+        text: 'Nome do aluno(a)'
+
+    TextInput:
+        id: txt_input01
+		background_color: (0.96, 0.93, 0.73, 1) if self.focus else (0.83, 0.94, 1, 1)
+		pos_hint: {'x': .03, 'top': .86}
+		size_hint: (.87, .06)
+        cursor_blink: True
+        hint_text: 'Nome do Aluno(a)'
+		multiline: False
+		write_tab: False
+
+    # ----- CPF ----- #
+    Label:
+        id: lbl_02
+        pos_hint: {'x': .03, 'top': .77}
+        size_hint: (.30, .03)
+        padding: (1, 0)
+        text_size: self.size
+        color: (0.831, 0.941, 1, 1)
+        halign: 'left'
+        text: 'CPF'
+
+    TextInput:
+        id: txt_input02
+		background_color: (0.96, 0.93, 0.73, 1) if self.focus else (0.83, 0.94, 1, 1)
+		pos_hint: {'x': .03, 'top': .73}
+		size_hint: (.27, .06)
+        hint_text: 'CPF'
+		multiline: False
+		write_tab: False
+
+    # ----- RG ----- #
+    Label:
+        id: lbl_03
+        pos_hint: {'x': .33, 'top': .77}
+        size_hint: (.30, .03)
+        padding: (1, 0)
+        text_size: self.size
+        color: (0.831, 0.941, 1, 1)
+        halign: 'left'
+        text: 'RG'
+
+    TextInput:
+        id: txt_input03
+		background_color: (0.96, 0.93, 0.73, 1) if self.focus else (0.83, 0.94, 1, 1)
+		pos_hint: {'x': .33, 'top': .73}
+		size_hint: (.27, .06)
+        hint_text: 'RG'
+		multiline: False
+		write_tab: False
+
+    # ----- Data Nascimento ----- #
+    Label:
+        id: lbl_04
+        pos_hint: {'x': .63, 'top': .77}
+        size_hint: (.30, .03)
+        padding: (1, 0)
+        text_size: self.size
+        color: (0.831, 0.941, 1, 1)
+        halign: 'left'
+        text: 'Data de Nascimento'
+
+    TextInput:
+        id: txt_input04
+		background_color: (0.96, 0.93, 0.73, 1) if self.focus else (0.83, 0.94, 1, 1)
+		pos_hint: {'x': .63, 'top': .73}
+		size_hint: (.27, .06)
+        hint_text: 'dd/mm/aaaa'
+		multiline: False
+		write_tab: False
+
+    # ----- Historico ----- #
+    Label:
+        id: lbl_05
+        pos_hint: {'x': .11, 'top': .62}
+        size_hint: (.30, .03)
+        padding: (2, 0)
+        text_size: self.size
+        color: (0.831, 0.941, 1, 1)
+        halign: 'left'
+
+    # ----- Certidão de Nascimento ----- #
+    Label:
+        id: lbl_06
+        pos_hint: {'right': .90, 'top': .62}
+        size_hint: (.40, .03)
+        text_size: self.size
+        color: (0.831, 0.941, 1, 1)
+        halign: 'right'
+
+    # ----- Check Boxes Historico ----- #
+    BoxLayout:
+        orientation: 'vertical'
+        pos_hint: {'x': .03, 'top': .58}
+        size_hint: (.30, .10)
+
+        BoxLayout:
+            Label:
+                id: lbl_07
+                color: (0.831, 0.941, 1, 1)
+                text: 'Sim'
+            Label:
+                id: lbl_08
+                color: (0.831, 0.941, 1, 1)
+
+        BoxLayout:
+            CheckBox:
+                id: check01
+                group: 'sn1'
+                background_radio_normal: 'Images/Checkbox1.png'
+                background_radio_down: 'Images/Checkbox2.png'
+                #on_active: root.check_checkbox(self, self.active)
+            CheckBox:
+                id: check02
+                group: 'sn1'
+                background_radio_normal: 'Images/Checkbox1.png'
+                background_radio_down: 'Images/Checkbox3.png'
+                #on_active: root.check_checkbox(self, self.active)
+
+    # ----- Check Boxes Certidão de Nascimento ----- #
+    BoxLayout:
+        orientation: 'vertical'
+        pos_hint: {'x': .60, 'top': .58}
+        size_hint: (.30, .10)
+
+        BoxLayout:
+            Label:
+                id: lbl_09
+                color: (0.831, 0.941, 1, 1)
+                text: 'Sim'
+            Label:
+                id: lbl_10
+                color: (0.831, 0.941, 1, 1)
+
+        BoxLayout:
+            CheckBox:
+                id: check03
+                group: 'sn2'
+                background_radio_normal: 'Images/Checkbox1.png'
+                background_radio_down: 'Images/Checkbox2.png'
+                #on_active: root.check_checkbox(self, self.active)
+            CheckBox:
+                id: check04
+                group: 'sn2'
+                background_radio_normal: 'Images/Checkbox1.png'
+                background_radio_down: 'Images/Checkbox3.png'
+                #on_active: root.check_checkbox(self, self.active)
+
+    # ----- Botões ----- #
+
+    Button:  # ----- Botão Limpar Widgets ----- #
+        id: btn_limpar
+        pos_hint: {'right': .79, 'top': .35}
+        size_hint: (.20, .08)
+        background_normal: 'Images/btn_azul.png'
+        background_down: 'Images/btn_azul2.png'
+        border: (0, 0, 0, 0)
+        text_size: self.size
+        halign: 'left'
+        valign: 'center'
+        line_height: 1.8
+        color: (0.831, 0.941, 1, 1)
+        text: '  Limpar'
+        on_release: root.limpa_widintrodados()
+
+    Button:  # ----- Botão Salvar ----- #
+        id: btn_salvar
+        pos_hint: {'right': 1, 'top': .35}
+        size_hint: (.20, .08)
+        background_normal: 'Images/btn_azul.png'
+        background_down: 'Images/btn_azul2.png'
+        border: (0, 0, 0, 0)
+        text_size: self.size
+        halign: 'left'
+        valign: 'center'
+        line_height: 1.8
+        color: (0.831, 0.941, 1, 1)
+        text: '  Salvar'
+        on_release: root.acao_btn_salvar()
+
+
+# ----- Classe resultados local arquivo ----- #
+<WidResultado1>:
+    canvas:
+        Color:
+            rgba: (0, 0, .3, .4)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    orientation: 'vertical'
+    pos_hint: {'x': 0, 'top': .345}
+    size_hint: (.45, .25)
+
+    Label:
+        id: lbl_titulo
+        size_hint_y: (.30)
+        text_size: self.size
+        color: (0.83, 0.94, 1, 1)
+        halign: 'center'
+        valign: 'bottom'
+        color: (0, 1, 0, 1)
+        text: 'Cadastrado com sucesso'
+
+    GridLayout:
+        rows: 3
+        cols: 2
+        padding: (20, 10, 0, 10)
+
+        # ----- Pasta ----- #
+        Label:
+            size_hint_x: .80
+            text_size: self.size
+            color: (0.83, 0.94, 1, 1)
+            halign: 'left'
+            valign: 'top'
+            text: 'Pasta:'
+
+        Label:
+            id: lbl_pasta
+            text_size: self.size
+            color: (0.83, 0.94, 1, 1)
+            padding: (20, 0)
+            halign: 'left'
+            valign: 'top'
+
+        # ----- Posição ----- #
+        Label:
+            size_hint_x: .80
+            text_size: self.size
+            color: (0.83, 0.94, 1, 1)
+            halign: 'left'
+            valign: 'top'
+            text: root.posicao
+
+        Label:
+            id: lbl_posicao
+            text_size: self.size
+            color: (0.83, 0.94, 1, 1)
+            padding: (20, 0)
+            halign: 'left'
+            valign: 'top'
+
+        # ----- Protocolo ----- #
+        Label:
+            size_hint_x: .80
+            text_size: self.size
+            color: (0.83, 0.94, 1, 1)
+            halign: 'left'
+            valign: 'center'
+            text: 'Protocolo:'
+
+        Label:
+            id: lbl_protocolo
+            text_size: self.size
+            color: (0.83, 0.94, 1, 1)
+            padding: (20, 0)
+            halign: 'left'
+            valign: 'center'

@@ -1,0 +1,78 @@
+#:kivy 1.11.0
+
+# Modulo de Popups
+
+
+# ----- Popup Novo ----- #
+<PopupSalvar>:
+	id: pop_salvar
+	pos_hint: {'x': .35, 'y': .55}
+	size_hint: (.15, .20)
+	title_color: (0.831, 0.941, 1, 1)
+	auto_dismiss: False
+	title_align: 'center'
+	background: 'Images/FundoC_Borda40.png'
+
+	Button:
+		id: btn_novosalvo
+		background_normal: ''
+    	background_color: (0, 0, 0, .4)
+		size_hint: (.90, .50)
+		color: (0.831, 0.941, 1, 1)
+		text: 'Clique para voltar'
+		on_press: root.dismiss()
+
+
+# ----- Popup falta de dados no formulário ----- #
+<PopupFaltaDados>:
+	id: pop_faltadados
+	size_hint: (.10, .02)
+	pos_hint: {'x': .65, 'y': .75}
+	auto_dismiss: True
+	title_align: 'left'
+	title_color: [1, 0, 0, 1]
+	title_size: '19sp'
+	bold: True
+	title: '?'
+	separator_color: [0, 0, 0, 0]
+	background: 'Images/FundoTransparente.png'
+
+
+# ----- Popup de confirmação ----- #
+<PopupConfirmacao>:
+	id: pop_novosalvo
+	pos_hint: {'x': .35, 'y': .55}
+	size_hint: (.15, .20)
+	title_color: (0.831, 0.941, 1, 1)
+	title: 'Tem a certeza \n que quer apagar?'
+	auto_dismiss: False
+	title_align: 'center'
+	background: 'Images/FundoC_Borda40.png'
+
+	BoxLayout:
+		canvas:
+            Color:
+                rgba: (0, 0, 0, 0)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+		size_hint_y: (.50)
+		spacing: 5
+
+		Button:
+			id: btn_novosalvo
+			background_normal: ''
+    		background_color: (0, 0, 0, .4)
+			color: (0.831, 0.941, 1, 1)
+			text: 'Sim'
+			on_release: app.root.apagar_registro()
+			on_release: root.dismiss()
+
+		Button:
+			id: btn_novosalvo
+			background_normal: ''
+    		background_color: (0, 0, 0, .4)
+			color: (0.831, 0.941, 1, 1)
+			text: root.texto
+			on_press: root.dismiss()
