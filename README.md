@@ -1,4 +1,7 @@
 # Arquivo-Passivo
-Arquivo Passivo com Python e Kivy
+Arquivo Passivo com Python SQLite e Kivy
 
-Arquivo de antigos alunos.
+A aplicação é utilisada para gerenciar o local de arquivo dos documentos de antigos alunos.
+
+Aviso: A Base de dados vai ser criada na pasta 'Documentos' do Usuário:
+'- Sistema Gestao Escolar -/Arquivo Passivo/BDArquivoPassivo.db'
