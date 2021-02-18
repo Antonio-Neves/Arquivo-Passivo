@@ -23,7 +23,7 @@ from kivy.uix.gridlayout import GridLayout
 
 # ----- Path Base de Dados ----- #
 db_path = os.path.expanduser(
-    "~/Documents/- Sistema Gestao Escolar -/Arquivo Passivo/BDArquivoPassivo.db")
+    "~/Sistema Gestao Escolar/Arquivo Passivo/BDArquivoPassivo.db")
 
 
 # ----- Classe Formulário ----- #

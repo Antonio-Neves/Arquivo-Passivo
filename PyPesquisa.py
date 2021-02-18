@@ -22,7 +22,7 @@ from kivy.uix.scrollview import ScrollView
 
 # ----- Path Base de Dados ----- #
 db_path = os.path.expanduser(
-    "~/Documents/- Sistema Gestao Escolar -/Arquivo Passivo/BDArquivoPassivo.db")
+    "~/Sistema Gestao Escolar/Arquivo Passivo/BDArquivoPassivo.db")
 
 
 class WidPesquisa(FloatLayout):

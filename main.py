@@ -13,16 +13,26 @@
 - Cria Base de Dados
 """
 
-# ----- Importações ----- #
-import os
-os.environ['KIVY_GL_BACKEND'] = 'angle_sdl2'
+# ----- Importações iniciais ----- #
+import kivy
+kivy.require('1.11.1')
 
 from kivy import Config
-Config.set('graphics', 'multisamples', '0')
+import os
+import platform
 
-import kivy
-kivy.require('1.11.0')
+# ----- Soluciona problemas de OpenGL e placas graficas antigas em windows -- #
+if platform.system() == 'Windows':
 
+    os.environ['KIVY_GL_BACKEND'] = 'angle_sdl2'
+    Config.set('graphics', 'multisamples', '0')
+
+# ----- Necessário para Video e Audio no Linux----- #
+if platform.system() == 'Linux':
+
+    os.environ['KIVY_VIDEO'] = 'ffpyplayer'
+
+# ----- Importações ----- #
 Config.set('graphics', 'window_state', 'maximized')
 Config.set('graphics', 'resizable', True)
 Config.set('kivy', 'exit_on_escape', '0')
@@ -30,18 +40,15 @@ Config.set('kivy', 'exit_on_escape', '0')
 #Config.set('graphics', 'minimum_height', 700)
 
 import sqlite3
-
 import PyPrincipal
-
 from kivy.app import App
-
 
 # ----- Cria pastas ----- #
 try:
     os.mkdir(os.path.expanduser(
-        "~/Documents/- Sistema Gestao Escolar -"))
+        "~/Sistema Gestao Escolar"))
     os.mkdir(os.path.expanduser(
-        "~/Documents/- Sistema Gestao Escolar -/Arquivo Passivo"))
+        "~/Sistema Gestao Escolar/Arquivo Passivo"))
 except:
     pass
 
@@ -72,7 +79,7 @@ def cria_basedados(path):
 
 # ----- Path Base de Dados ----- #
 db_path = os.path.expanduser(
-    "~/Documents/- Sistema Gestao Escolar -/Arquivo Passivo/BDArquivoPassivo.db")
+    "~/Sistema Gestao Escolar/Arquivo Passivo/BDArquivoPassivo.db")
 
 # ----- Cria Base de Dados ----- #
 cria_basedados(db_path)
